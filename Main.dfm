@@ -1,6 +1,6 @@
 object Window: TWindow
-  Left = 447
-  Top = 194
+  Left = 1991
+  Top = 151
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Schiffe Versenken'
@@ -101,6 +101,10 @@ object Window: TWindow
         object DifficultyEasy: TMenuItem
           Caption = 'Leicht'
           OnClick = DifficultyEasyClick
+        end
+        object DifficultyMiddle: TMenuItem
+          Caption = 'Mittel'
+          OnClick = DifficultyMiddleClick
         end
         object DifficultyHard: TMenuItem
           Caption = 'Schwer'

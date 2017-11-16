@@ -3,7 +3,7 @@ unit Computer;
 interface
 
 uses
-  Game, Windows, Stack;
+  Game, Windows, UQueue;
 
 type
   TPointObject = class(TObject)
@@ -13,7 +13,9 @@ type
   TComputer = class
     { difficulty: 0 = easy; 1 = medium; 2 = hard }
     difficulty: Integer;
-    strategy: TStack;
+    strategy: TQueue;
+    gapfill: boolean;
+    lastAttack, lastPlan: TPoint;
 
     function attack: Integer;
     procedure placeShips;
@@ -29,7 +31,9 @@ implementation
 constructor TComputer.Create(g: TGame);
 begin
   Game := g;
-  strategy := TStack.Create;
+  strategy := TQueue.Create;
+  gapfill := false;
+  lastPlan = TPoint.Create(0, 0);
 end;
 
 procedure TComputer.placeShips;
@@ -54,13 +58,6 @@ end;
 
 function TComputer.attack: Integer;
 var
-
-begin
-
-end;
-{
-function TComputer.attack: Integer;
-var
   r: Integer;
   po, newpo: TPointObject;
   p: TPoint;
@@ -80,7 +77,14 @@ begin
           r := Game.playerBoard.attack(lastAttack.X, lastAttack.Y);
         until (r = 0) or (r = 2);
       end;
-    1: // hard
+    1: // middle
+      begin
+        Randomize;
+        repeat
+
+        until (r = 0) or (r = 2);
+      end;
+    2: // hard
       begin
         proceed := false; // repeat the logic until we are allowed to proceed
         repeat
@@ -198,5 +202,5 @@ begin
 
   Result := r;
 end;
-}
+
 end.

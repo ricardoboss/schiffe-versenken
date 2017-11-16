@@ -35,6 +35,7 @@ type
     DifficultyEasy: TMenuItem;
     MenuInfo: TMenuItem;
     MenuSettings: TMenuItem;
+    DifficultyMiddle: TMenuItem;
     function DirToString(dir: Integer): string;
     procedure FormCreate(Sender: TObject);
     procedure MenuNewGameClick(Sender: TObject);
@@ -54,6 +55,7 @@ type
     procedure DifficultyEasyClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure MenuInfoClick(Sender: TObject);
+    procedure DifficultyMiddleClick(Sender: TObject);
   end;
 
 const
@@ -433,11 +435,17 @@ procedure TWindow.DifficultyEasyClick(Sender: TObject);
 begin
   Computer.setDifficulty(0);
   ShowMessage('Computer spielt nun leicht.');
+end;   
+
+procedure TWindow.DifficultyMiddleClick(Sender: TObject);
+begin
+  Computer.setDifficulty(1);
+  ShowMessage('Computer spielt nun mittel.');
 end;
 
 procedure TWindow.DifficultyHardClick(Sender: TObject);
 begin
-  Computer.setDifficulty(1);
+  Computer.setDifficulty(2);
   ShowMessage('Computer spielt nun schwer.');
 end;
 
